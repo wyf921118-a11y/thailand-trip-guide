@@ -245,9 +245,9 @@
   const dayLinks = $$('[data-day-link]');
   const bottomLinks = $$('[data-nav-section]');
   const sections = [
-    { id: 'overview', element: $('#overview') },
-    { id: 'transport', element: $('#transport') },
+    { id: 'home', element: $('#home') },
     { id: 'daily', element: $('#daily') },
+    { id: 'transport', element: $('#transport') },
     { id: 'utility', element: $('#utility') }
   ];
 
@@ -272,7 +272,7 @@
     sections.forEach(({ element }) => element && sectionObserver.observe(element));
     sectionObserver.observe($('#preparation'));
   } else {
-    setActiveBottom('overview');
+    setActiveBottom('home');
   }
 
   dayLinks.forEach((link) => link.addEventListener('click', () => setActiveDay(link.dataset.dayLink)));

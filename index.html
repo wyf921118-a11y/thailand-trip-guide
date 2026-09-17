@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#f7f3eb">
   <meta name="description" content="勇闯泰兰德——2026 年 10 月 2 日至 6 日，深圳、澳门与曼谷五天四晚旅行手册。">
   <title>勇闯泰兰德｜五天四晚旅行手册</title>
-  <link rel="stylesheet" href="styles.css?v=5">
-  <script src="app.js?v=5" defer></script>
+  <link rel="stylesheet" href="styles.css?v=6">
+  <script src="app.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -28,9 +28,9 @@
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
   </svg>
 
-  <header class="site-header" id="overview">
+  <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#overview" aria-label="回到总览">勇闯泰兰德</a>
+      <a class="brand" href="#home" aria-label="回到首页">勇闯泰兰德</a>
       <div class="header-actions">
         <button class="icon-button" id="shareButton" type="button"><svg><use href="#i-share"/></svg><span>分享</span></button>
         <div class="theme-control">
@@ -46,7 +46,7 @@
   </header>
 
   <main id="main">
-    <section class="hero page-shell" aria-labelledby="hero-title">
+    <section class="hero page-shell" id="home" aria-labelledby="hero-title">
       <div class="hero-copy">
         <h1 id="hero-title">勇闯<br>泰兰德</h1>
         <p class="hero-note">把曼谷的热闹，收进五天的日常。</p>
@@ -91,65 +91,6 @@
           <a class="button primary" id="attentionMapLink" href="#transport"><svg><use href="#i-pin"/></svg>交通住宿</a>
         </div>
       </div>
-    </section>
-
-    <section class="overview-section page-shell section-block" aria-labelledby="route-title">
-      <div class="section-heading">
-        <span class="round-icon gold"><svg><use href="#i-route"/></svg></span>
-        <div><h2 id="route-title">全程总览</h2><p>跨城交通、曼谷三天主题与每晚落脚处</p></div>
-      </div>
-      <ol class="city-route" aria-label="城市路线示意，不代表真实比例">
-        <li><span class="city-icon">深</span><strong>深圳</strong><small>10.02 出发</small></li>
-        <li><span class="route-arrow">→</span><span class="city-icon">澳</span><strong>澳门</strong><small>10.02 中转</small></li>
-        <li class="active"><span class="route-arrow">→</span><span class="city-icon">曼</span><strong>曼谷</strong><small>10.02—10.06</small></li>
-        <li><span class="route-arrow">→</span><span class="city-icon">澳</span><strong>澳门</strong><small>10.06 返程</small></li>
-        <li><span class="route-arrow">→</span><span class="city-icon">深</span><strong>深圳</strong><small>10.06 抵达</small></li>
-      </ol>
-      <div class="bangkok-themes">
-        <article><span>D2 · 10.03</span><h3>市集与公园</h3><p>乍都乍淘货、古着商场、城市绿意</p></article>
-        <article><span>D3 · 10.04</span><h3>寺庙与河畔</h3><p>古城人文、渡船与湄南河日落</p></article>
-        <article><span>D4 · 10.05</span><h3>老街与咖啡</h3><p>Song Wat、Talat Noi、唐人街烟火</p></article>
-      </div>
-      <div class="night-strip"><svg><use href="#i-bed"/></svg><span>每晚住宿</span><strong>曼谷亚洲酒店 · 4 晚</strong><a href="#hotel-card">查看</a></div>
-    </section>
-
-    <section class="transport page-shell section-block" id="transport" aria-labelledby="transport-title">
-      <div class="section-heading">
-        <span class="round-icon gold"><svg><use href="#i-plane"/></svg></span>
-        <div><h2 id="transport-title">交通与住宿</h2><p>跨城节点与曼谷落脚处</p></div>
-      </div>
-
-      <div class="flight-ticket" aria-label="往返机票，已预订">
-        <div class="ticket-head"><strong>往返机票</strong><span class="status confirmed">已预订</span></div>
-        <article class="flight-leg">
-          <div class="leg-label"><span>去程</span><time datetime="2026-10-02">10 月 2 日</time></div>
-          <div class="airport"><small>澳门 MFM · UTC+8</small><strong>14:15</strong></div>
-          <div class="flight-line"><svg><use href="#i-plane"/></svg><span>FD763</span><small>2 小时 50 分</small></div>
-          <div class="airport right"><small>曼谷 DMK · UTC+7</small><strong>16:05</strong></div>
-        </article>
-        <article class="flight-leg">
-          <div class="leg-label"><span>回程</span><time datetime="2026-10-06">10 月 6 日</time></div>
-          <div class="airport"><small>曼谷 DMK · UTC+7</small><strong>10:00</strong></div>
-          <div class="flight-line"><svg><use href="#i-plane"/></svg><span>航班号待补</span><small>2 小时 45 分</small></div>
-          <div class="airport right"><small>澳门 MFM · UTC+8</small><strong>13:45</strong></div>
-        </article>
-      </div>
-
-      <article class="hotel-card" id="hotel-card">
-        <div class="hotel-art" aria-hidden="true"><svg viewBox="0 0 160 140"><path d="M34 120V28h78v92M25 120h104M48 45h12m14 0h12m14 0h12M48 64h12m14 0h12m14 0h12M48 83h12m14 0h12m14 0h12M66 120V99h18v21M18 120c8-24 16-32 24-38M126 120c-3-18-8-31-17-40"/></svg></div>
-        <div class="hotel-copy">
-          <div class="card-title-row"><div><small>酒店住宿</small><h3>曼谷亚洲酒店</h3><p>Asia Hotel Bangkok</p></div><span class="status confirmed">已预订</span></div>
-          <dl class="hotel-facts"><div><dt>入住</dt><dd>10 月 2 日 · 19:00 办理</dd></div><div><dt>退房</dt><dd>10 月 6 日 · 共 4 晚</dd></div><div><dt>同行</dt><dd>2 人</dd></div></dl>
-          <address>296 Thanon Phaya Thai, Ratchathewi, Bangkok 10400</address>
-          <div class="inline-actions"><button class="text-action" type="button" data-copy="Asia Hotel Bangkok\n296 Thanon Phaya Thai, Ratchathewi, Bangkok 10400">复制名称与地址</button><a class="text-action" href="https://www.google.com/maps/search/?api=1&query=Asia%20Hotel%20Bangkok" target="_blank" rel="noreferrer">地图导航</a><a class="text-action" href="tel:+6622170808">拨打电话</a></div>
-          <p class="verification-note">地址与电话请在出发前按最终订单再次核对。</p>
-        </div>
-      </article>
-
-      <article class="ferry-card">
-        <div class="ferry-title"><svg><use href="#i-boat"/></svg><div><h3>机场码头往返船班</h3><p>候选方案，实际班次与候船要求待核实</p></div><span class="status pending">待预订</span></div>
-        <div class="ferry-legs"><p><strong>去程 · 10.02</strong><span>08:45—10:05</span><small>深圳机场码头 → 澳门氹仔码头</small></p><p><strong>回程 · 10.06</strong><span>20:00—21:20</span><small>澳门氹仔码头 → 深圳机场码头</small></p></div>
-      </article>
     </section>
 
     <section class="daily-section" id="daily" aria-labelledby="daily-title">
@@ -264,6 +205,45 @@
       </div>
     </section>
 
+    <section class="transport page-shell section-block" id="transport" aria-labelledby="transport-title">
+      <div class="section-heading">
+        <span class="round-icon gold"><svg><use href="#i-plane"/></svg></span>
+        <div><h2 id="transport-title">交通与住宿</h2><p>跨城节点与曼谷落脚处</p></div>
+      </div>
+
+      <div class="flight-ticket" aria-label="往返机票，已预订">
+        <div class="ticket-head"><strong>往返机票</strong><span class="status confirmed">已预订</span></div>
+        <article class="flight-leg">
+          <div class="leg-label"><span>去程</span><time datetime="2026-10-02">10 月 2 日</time></div>
+          <div class="airport"><small>澳门 MFM · UTC+8</small><strong>14:15</strong></div>
+          <div class="flight-line"><svg><use href="#i-plane"/></svg><span>FD763</span><small>2 小时 50 分</small></div>
+          <div class="airport right"><small>曼谷 DMK · UTC+7</small><strong>16:05</strong></div>
+        </article>
+        <article class="flight-leg">
+          <div class="leg-label"><span>回程</span><time datetime="2026-10-06">10 月 6 日</time></div>
+          <div class="airport"><small>曼谷 DMK · UTC+7</small><strong>10:00</strong></div>
+          <div class="flight-line"><svg><use href="#i-plane"/></svg><span>航班号待补</span><small>2 小时 45 分</small></div>
+          <div class="airport right"><small>澳门 MFM · UTC+8</small><strong>13:45</strong></div>
+        </article>
+      </div>
+
+      <article class="hotel-card" id="hotel-card">
+        <div class="hotel-art" aria-hidden="true"><svg viewBox="0 0 160 140"><path d="M34 120V28h78v92M25 120h104M48 45h12m14 0h12m14 0h12M48 64h12m14 0h12m14 0h12M48 83h12m14 0h12m14 0h12M66 120V99h18v21M18 120c8-24 16-32 24-38M126 120c-3-18-8-31-17-40"/></svg></div>
+        <div class="hotel-copy">
+          <div class="card-title-row"><div><small>酒店住宿</small><h3>曼谷亚洲酒店</h3><p>Asia Hotel Bangkok</p></div><span class="status confirmed">已预订</span></div>
+          <dl class="hotel-facts"><div><dt>入住</dt><dd>10 月 2 日 · 19:00 办理</dd></div><div><dt>退房</dt><dd>10 月 6 日 · 共 4 晚</dd></div><div><dt>同行</dt><dd>2 人</dd></div></dl>
+          <address>296 Thanon Phaya Thai, Ratchathewi, Bangkok 10400</address>
+          <div class="inline-actions"><button class="text-action" type="button" data-copy="Asia Hotel Bangkok\n296 Thanon Phaya Thai, Ratchathewi, Bangkok 10400">复制名称与地址</button><a class="text-action" href="https://www.google.com/maps/search/?api=1&query=Asia%20Hotel%20Bangkok" target="_blank" rel="noreferrer">地图导航</a><a class="text-action" href="tel:+6622170808">拨打电话</a></div>
+          <p class="verification-note">地址与电话请在出发前按最终订单再次核对。</p>
+        </div>
+      </article>
+
+      <article class="ferry-card">
+        <div class="ferry-title"><svg><use href="#i-boat"/></svg><div><h3>机场码头往返船班</h3><p>候选方案，实际班次与候船要求待核实</p></div><span class="status pending">待预订</span></div>
+        <div class="ferry-legs"><p><strong>去程 · 10.02</strong><span>08:45—10:05</span><small>深圳机场码头 → 澳门氹仔码头</small></p><p><strong>回程 · 10.06</strong><span>20:00—21:20</span><small>澳门氹仔码头 → 深圳机场码头</small></p></div>
+      </article>
+    </section>
+
     <section class="preparation page-shell section-block" id="preparation" aria-labelledby="prep-title">
       <div class="section-heading">
         <span class="round-icon orange"><svg><use href="#i-check"/></svg></span>
@@ -311,7 +291,7 @@
   </main>
 
   <nav class="bottom-nav" aria-label="主要页面导航">
-    <a href="#overview" data-nav-section="overview"><svg><use href="#i-route"/></svg><span>总览</span></a>
+    <a href="#home" data-nav-section="home"><svg><use href="#i-route"/></svg><span>首页</span></a>
     <a href="#daily" data-nav-section="daily"><svg><use href="#i-list"/></svg><span>每日</span></a>
     <a href="#transport" data-nav-section="transport"><svg><use href="#i-bed"/></svg><span>交通住宿</span></a>
     <a href="#utility" data-nav-section="utility"><svg><use href="#i-info"/></svg><span>实用</span></a>

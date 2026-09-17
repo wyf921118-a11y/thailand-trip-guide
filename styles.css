@@ -133,22 +133,6 @@ svg { display: block; }
 .section-heading { margin-bottom: 28px; display: flex; align-items: center; gap: 13px; }
 .section-heading h2 { margin: 0; color: var(--green); font-size: clamp(26px, 3.5vw, 34px); line-height: 1.25; }
 .section-heading p { margin: 3px 0 0; color: var(--muted); }
-.city-route { margin: 0; padding: 28px 10px; display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; border-block: 1px solid var(--border); }
-.city-route li { position: relative; min-width: 0; display: grid; justify-items: center; gap: 3px; text-align: center; }
-.city-route .city-icon { width: 56px; height: 56px; display: grid; place-items: center; color: var(--green); background: var(--green-soft); border-radius: 50%; font-weight: 800; }
-.city-route .active .city-icon { color: #fff; background: var(--orange); }
-.city-route strong { font-size: 18px; }
-.city-route small { color: var(--muted); }
-.route-arrow { position: absolute; left: -14px; top: 17px; color: var(--gold); font-size: 24px; }
-.bangkok-themes { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.bangkok-themes article { padding: 22px; border: 1px solid var(--border); border-radius: var(--radius); background: color-mix(in srgb, var(--surface) 75%, transparent); }
-.bangkok-themes span { color: var(--orange); font-size: 14px; font-weight: 700; }
-.bangkok-themes h3 { margin: 5px 0 4px; font-size: 20px; }
-.bangkok-themes p { margin: 0; color: var(--muted); }
-.night-strip { margin-top: 14px; min-height: 62px; padding: 10px 18px; display: flex; align-items: center; gap: 12px; border-radius: 13px; background: var(--green); color: var(--bg); }
-.night-strip svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; }
-.night-strip strong { margin-left: auto; }
-.night-strip a { margin-left: 12px; }
 
 .transport { border-top: 1px solid var(--border); }
 .flight-ticket { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
@@ -343,12 +327,7 @@ details summary { cursor: pointer; }
   .attention-symbol svg { width: 29px; height: 29px; }
   .countdown-wrap { grid-column: 1 / -1; min-width: 0; padding-top: 13px; display: flex; justify-content: space-between; align-items: end; border-top: 1px solid var(--border); text-align: left; }
   .countdown { font-size: 28px; }
-  .city-route { overflow-x: auto; grid-template-columns: repeat(5, 112px); justify-content: start; scroll-snap-type: x proximity; scrollbar-width: none; }
-  .city-route::-webkit-scrollbar, .day-nav::-webkit-scrollbar { display: none; }
-  .city-route li { scroll-snap-align: center; }
-  .bangkok-themes { grid-template-columns: 1fr; }
-  .night-strip { align-items: flex-start; flex-wrap: wrap; }
-  .night-strip strong { order: 4; flex-basis: calc(100% - 34px); margin-left: 34px; }
+  .day-nav::-webkit-scrollbar { display: none; }
   .flight-leg { grid-template-columns: 64px 1fr 80px 1fr; padding: 18px 14px; gap: 7px; }
   .airport strong { font-size: 26px; }
   .flight-line::before, .flight-line::after { width: 15px; }
