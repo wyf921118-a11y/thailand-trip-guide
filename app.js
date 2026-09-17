@@ -248,6 +248,7 @@
     { id: 'home', element: $('#home') },
     { id: 'daily', element: $('#daily') },
     { id: 'transport', element: $('#transport') },
+    { id: 'luggage', element: $('#luggage') },
     { id: 'utility', element: $('#utility') }
   ];
 
@@ -267,7 +268,7 @@
   if ('IntersectionObserver' in window) {
     const sectionObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) setActiveBottom(visible.target.id === 'preparation' ? 'utility' : visible.target.id);
+      if (visible) setActiveBottom(visible.target.id === 'preparation' ? 'luggage' : visible.target.id);
     }, { rootMargin: '-28% 0px -60% 0px', threshold: [0, .08] });
     sections.forEach(({ element }) => element && sectionObserver.observe(element));
     sectionObserver.observe($('#preparation'));

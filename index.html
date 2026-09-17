@@ -6,8 +6,10 @@
   <meta name="theme-color" content="#f7f3eb">
   <meta name="description" content="勇闯泰兰德——2026 年 10 月 2 日至 6 日，深圳、澳门与曼谷五天四晚旅行手册。">
   <title>勇闯泰兰德｜五天四晚旅行手册</title>
-  <link rel="stylesheet" href="styles.css?v=6">
-  <script src="app.js?v=6" defer></script>
+  <link rel="stylesheet" href="styles.css?v=7">
+  <script src="luggage-config.js?v=7" defer></script>
+  <script src="app.js?v=7" defer></script>
+  <script src="luggage.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -26,6 +28,10 @@
     <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l1 13H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2M9 12v5M15 12v5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="m14 7 3 3"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 3h6l1 4H8l1-4ZM7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
   </svg>
 
   <header class="site-header">
@@ -260,6 +266,37 @@
       <details class="completed-list"><summary>已完成 2 项</summary><ul><li><svg><use href="#i-check"/></svg>往返机票预订</li><li><svg><use href="#i-check"/></svg>酒店预订</li></ul></details>
     </section>
 
+    <section class="luggage-section page-shell section-block" id="luggage" aria-labelledby="luggage-title">
+      <div class="luggage-heading">
+        <div class="section-heading">
+          <span class="round-icon orange"><svg><use href="#i-bag"/></svg></span>
+          <div><h2 id="luggage-title">行李清单</h2><p>两个人分开清点，共同物品只记录一次</p></div>
+        </div>
+        <div class="sync-state is-demo" id="luggageSyncState" role="status" aria-live="polite"><span></span>未连接共享数据库</div>
+      </div>
+
+      <div class="luggage-overview" aria-label="装包总进度">
+        <div class="packing-progress" id="packingProgress"></div>
+        <button class="button primary luggage-final-shortcut" id="openFinalCheck" type="button"><svg><use href="#i-check"/></svg>出门前最后确认</button>
+      </div>
+
+      <div class="luggage-workspace">
+        <div class="luggage-tabs" id="luggageTabs" role="tablist" aria-label="选择行李清单"></div>
+        <div class="luggage-controls">
+          <label class="filter-toggle"><input id="onlyUnpacked" type="checkbox"><span>只看未装包</span></label>
+          <div class="luggage-actions">
+            <button class="small-action" id="editNames" type="button"><svg><use href="#i-edit"/></svg>修改姓名</button>
+            <button class="small-action" id="openMissingCheck" type="button"><svg><use href="#i-info"/></svg>检查遗漏</button>
+          </div>
+        </div>
+        <div class="list-progress" id="activeListProgress"></div>
+        <ul class="packing-list" id="packingList" aria-live="polite"></ul>
+        <div class="empty-list" id="emptyPackingList" hidden></div>
+        <button class="add-item-button" id="addLuggageItem" type="button"><svg><use href="#i-plus"/></svg>添加物品</button>
+      </div>
+      <p class="luggage-sharing-note"><svg><use href="#i-info"/></svg><span id="luggageSharingNote">当前为演示模式：修改只在本页临时生效，刷新后恢复。连接共享数据库后，拿到链接的人都能查看和修改。</span></p>
+    </section>
+
     <section class="utility page-shell section-block" id="utility" aria-labelledby="utility-title">
       <div class="section-heading">
         <span class="round-icon gold"><svg><use href="#i-info"/></svg></span>
@@ -294,8 +331,50 @@
     <a href="#home" data-nav-section="home"><svg><use href="#i-route"/></svg><span>首页</span></a>
     <a href="#daily" data-nav-section="daily"><svg><use href="#i-list"/></svg><span>每日</span></a>
     <a href="#transport" data-nav-section="transport"><svg><use href="#i-bed"/></svg><span>交通住宿</span></a>
+    <a href="#luggage" data-nav-section="luggage"><svg><use href="#i-bag"/></svg><span>行李</span></a>
     <a href="#utility" data-nav-section="utility"><svg><use href="#i-info"/></svg><span>实用</span></a>
   </nav>
+
+  <dialog class="luggage-dialog item-dialog" id="itemDialog" aria-labelledby="itemDialogTitle">
+    <form id="itemForm">
+      <div class="dialog-head"><div><small id="itemDialogEyebrow">添加到你的行李</small><h2 id="itemDialogTitle">添加物品</h2></div><button class="dialog-close" type="button" data-close-dialog aria-label="关闭">×</button></div>
+      <input id="itemId" type="hidden">
+      <label class="form-field"><span>物品名称</span><input id="itemName" name="name" maxlength="120" required placeholder="例如：护照、手机、充电器"></label>
+      <label class="form-field quantity-field"><span>数量</span><input id="itemQuantity" name="quantity" type="number" min="1" max="99" value="1" required></label>
+      <label class="check-field"><input id="itemPacked" name="packed" type="checkbox"><span><strong>已装包</strong><small>勾选表示所填数量已全部装入</small></span></label>
+      <label class="check-field"><input id="itemLastMinute" name="lastMinute" type="checkbox"><span><strong>临出门装入</strong><small>适合手机、正在使用的充电器等</small></span></label>
+      <label class="form-field" id="carrierField" hidden><span>携带人</span><select id="itemCarrier" name="carrier"><option value="">尚未分工</option></select></label>
+      <div class="dialog-actions"><button class="button secondary" type="button" data-close-dialog>取消</button><button class="button primary" type="submit">保存物品</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="luggage-dialog names-dialog" id="namesDialog" aria-labelledby="namesDialogTitle">
+    <form id="namesForm">
+      <div class="dialog-head"><div><small>清单显示名称</small><h2 id="namesDialogTitle">修改两个人的姓名</h2></div><button class="dialog-close" type="button" data-close-dialog aria-label="关闭">×</button></div>
+      <label class="form-field"><span>你的姓名</span><input id="ownerName" maxlength="20" required></label>
+      <label class="form-field"><span>朋友姓名</span><input id="friendName" maxlength="20" required></label>
+      <div class="dialog-actions"><button class="button secondary" type="button" data-close-dialog>取消</button><button class="button primary" type="submit">保存姓名</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="luggage-dialog wide-dialog" id="missingDialog" aria-labelledby="missingDialogTitle">
+    <div class="dialog-scroll">
+      <div class="dialog-head"><div><small>参考清单只作提醒</small><h2 id="missingDialogTitle">检查遗漏</h2></div><button class="dialog-close" type="button" data-close-dialog aria-label="关闭">×</button></div>
+      <div id="missingCheckContent"></div>
+      <p class="check-disclaimer">检查通过只代表清单内项目已确认，不代表一定没有忘带东西。</p>
+      <div class="dialog-actions single"><button class="button primary" type="button" data-close-dialog>完成检查</button></div>
+    </div>
+  </dialog>
+
+  <dialog class="luggage-dialog wide-dialog" id="finalDialog" aria-labelledby="finalDialogTitle">
+    <div class="dialog-scroll">
+      <div class="dialog-head"><div><small>仅显示标记为“临出门装入”的物品</small><h2 id="finalDialogTitle">出门前最后确认</h2></div><button class="dialog-close" type="button" data-close-dialog aria-label="关闭">×</button></div>
+      <div id="finalCheckContent"></div>
+      <div class="dialog-actions single"><button class="button primary" type="button" data-close-dialog>返回清单</button></div>
+    </div>
+  </dialog>
+
+  <div class="undo-bar" id="luggageUndo" role="status" aria-live="polite" hidden><span></span><button type="button">撤销</button></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   <noscript><div class="noscript">倒计时、主题和分享需要 JavaScript；完整行程仍可继续阅读。</div></noscript>
